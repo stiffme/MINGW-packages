@@ -1,0 +1,12 @@
+diff -uprN geany-1.28.orig/src/utils.c geany-1.28/src/utils.c
+--- geany-1.28.orig/src/utils.c	2016-08-28 21:50:19.639403200 +0800
++++ geany-1.28/src/utils.c	2016-08-28 21:50:27.296370100 +0800
+@@ -2098,7 +2098,7 @@ const gchar *utils_resource_dir(GeanyRes
+ #ifdef G_OS_WIN32
+ 		gchar *prefix = win32_get_installation_dir();
+ 
+-		resdirs[RESOURCE_DIR_DATA] = g_build_filename(prefix, "data", NULL);
++		resdirs[RESOURCE_DIR_DATA] = g_build_filename(prefix, "share", "geany", NULL);
+ 		resdirs[RESOURCE_DIR_ICON] = g_build_filename(prefix, "share", "icons", NULL);
+ 		resdirs[RESOURCE_DIR_DOC] = g_build_filename(prefix, "share", "doc", "geany", "html", NULL);
+ 		resdirs[RESOURCE_DIR_LOCALE] = g_build_filename(prefix, "share", "locale", NULL);
