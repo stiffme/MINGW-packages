@@ -28,10 +28,12 @@ optdepends=(
 			"${MINGW_PACKAGE_PREFIX}-docutils")
 source=(http://download.geany.org/${_realname}-${pkgver}.tar.bz2{,.sig}
         "0001_patch_geany-1.28.patch"
+		"0002_fix_txt_files.patch"
        )
 sha256sums=('f73a3708f1a26e9bf72da564d5037d6f7fedca2e0d6175db0681c2b672100a5a'
             'SKIP'
             'cfec35cc1f8a63266520e574f40ba074f6b7456fda38220127c6e0c01d4add8e'
+			'beaede2ef28e80419d9b776551630bd9ca62fa5b815bfff8cef3ba88086de656'
             )
 
 prepare() {
@@ -45,6 +47,7 @@ prepare() {
 #  patch -p1 -i "${srcdir}/0003-Use-FHS.patch"
 #  patch -p1 -i "${srcdir}/0004-Fix-genapi-invocation.patch"
    patch -p1 -i "${srcdir}/0001_patch_geany-1.28.patch"
+   patch -p1 -i "${srcdir}/0002_fix_txt_files.patch"
 }
 
 build() {
