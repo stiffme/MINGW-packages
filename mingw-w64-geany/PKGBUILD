@@ -27,11 +27,11 @@ optdepends=(
 			"${MINGW_PACKAGE_PREFIX}-doxygen"
 			"${MINGW_PACKAGE_PREFIX}-docutils")
 source=(http://download.geany.org/${_realname}-${pkgver}.tar.bz2{,.sig}
-        "0001-modify-make-to-apply-windres-patch.patch"
+        "0001_patch_geany-1.28.patch"
        )
 sha256sums=('f73a3708f1a26e9bf72da564d5037d6f7fedca2e0d6175db0681c2b672100a5a'
             'SKIP'
-            'ba5be7feb1e377ddc905f94080bc066060bcaad336bfbffa893c3e247ea5959c'
+            'cfec35cc1f8a63266520e574f40ba074f6b7456fda38220127c6e0c01d4add8e'
             )
 
 prepare() {
@@ -44,7 +44,7 @@ prepare() {
 #  patch -p1 -i "${srcdir}/0002-Fix-plugin-compilation.patch"
 #  patch -p1 -i "${srcdir}/0003-Use-FHS.patch"
 #  patch -p1 -i "${srcdir}/0004-Fix-genapi-invocation.patch"
-   patch -p4 -i "${srcdir}/0001-modify-make-to-apply-windres-patch.patch"
+   patch -p1 -i "${srcdir}/0001_patch_geany-1.28.patch"
 }
 
 build() {
@@ -71,7 +71,7 @@ package() {
   cd "build-${MINGW_CHOST}"
   make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}${MINGW_PREFIX}/lib/geany"
-  #cp plugins/*.la "${pkgdir}${MINGW_PREFIX}/lib/geany/"
+  rm -rf "${pkgdir}${MINGW_PREFIX}/*.txt"
   rm -r "${pkgdir}${MINGW_PREFIX}/share/applications"
   rm -r "${pkgdir}${MINGW_PREFIX}/share/icons/hicolor/index.theme"
 }
