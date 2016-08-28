@@ -1,0 +1,36 @@
+diff -uprN geany-1.28.orig/Makefile.am geany-1.28/Makefile.am
+--- geany-1.28.orig/Makefile.am	2016-08-28 21:09:55.343617800 +0800
++++ geany-1.28/Makefile.am	2016-08-28 21:10:09.135275300 +0800
+@@ -43,15 +43,6 @@ uninstall-local:
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
+ 	$(INSTALL_DATA) $(srcdir)/COPYING $(DESTDIR)$(pkgdatadir)/GPL-2
+-if MINGW
+-	$(INSTALL_DATA) $(srcdir)/AUTHORS $(DESTDIR)$(prefix)/Authors.txt
+-	$(INSTALL_DATA) $(srcdir)/ChangeLog $(DESTDIR)$(prefix)/Changelog.txt
+-	$(INSTALL_DATA) $(srcdir)/COPYING $(DESTDIR)$(prefix)/Copying.txt
+-	$(INSTALL_DATA) $(srcdir)/README $(DESTDIR)$(prefix)/Readme.txt
+-	$(INSTALL_DATA) $(srcdir)/NEWS $(DESTDIR)$(prefix)/News.txt
+-	$(INSTALL_DATA) $(srcdir)/THANKS $(DESTDIR)$(prefix)/Thanks.txt
+-	$(INSTALL_DATA) $(srcdir)/TODO $(DESTDIR)$(prefix)/Todo.txt
+-endif
+ 
+ dist-hook:
+ 	@if test -d "$(top_srcdir)/.git"; then \
+diff -uprN geany-1.28.orig/Makefile.in geany-1.28/Makefile.in
+--- geany-1.28.orig/Makefile.in	2016-08-28 21:09:56.043859500 +0800
++++ geany-1.28/Makefile.in	2016-08-28 21:10:03.369931700 +0800
+@@ -1025,13 +1025,6 @@ uninstall-local:
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)
+ 	$(INSTALL_DATA) $(srcdir)/COPYING $(DESTDIR)$(pkgdatadir)/GPL-2
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/AUTHORS $(DESTDIR)$(prefix)/Authors.txt
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/ChangeLog $(DESTDIR)$(prefix)/Changelog.txt
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/COPYING $(DESTDIR)$(prefix)/Copying.txt
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/README $(DESTDIR)$(prefix)/Readme.txt
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/NEWS $(DESTDIR)$(prefix)/News.txt
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/THANKS $(DESTDIR)$(prefix)/Thanks.txt
+-@MINGW_TRUE@	$(INSTALL_DATA) $(srcdir)/TODO $(DESTDIR)$(prefix)/Todo.txt
+ 
+ dist-hook:
+ 	@if test -d "$(top_srcdir)/.git"; then \
